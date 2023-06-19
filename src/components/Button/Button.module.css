@@ -19,7 +19,5 @@
 
 .button__load:hover {
     color: #feff00 ;
-    background-color: rgba(17, 101, 232, 1);
-    /*border-radius: 4px;*/
- 
+    background-color: rgba(17, 101, 232, 1); 
 }

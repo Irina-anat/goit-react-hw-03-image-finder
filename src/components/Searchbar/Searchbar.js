@@ -20,9 +20,8 @@ class Searchbar extends Component  {
     if (this.state.searchQuery.trim() === '') {
     return  toast.info('Please enter the search data.');
         };
-
         this.props.onSubmitImage(this.state.searchQuery);
-        this.setState({ searchQuery: '' });
+        this.setState({searchQuery: ''});
     };
 
     render() {
@@ -49,7 +48,7 @@ class Searchbar extends Component  {
 };
 
 Searchbar.propTypes = {
-    onSubmitImage: PropTypes.func.isRequired
+    onSubmitImage: PropTypes.func.isRequired,
 };
 
 export default Searchbar;

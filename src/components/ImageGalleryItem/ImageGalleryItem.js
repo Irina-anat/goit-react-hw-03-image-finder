@@ -21,7 +21,7 @@ class ImageGalleryItem extends Component {
 
         return (
             <li className={css.gallary__item} onClick={this.toggleModal}>
-                <img className={css.gallery__image} src={src} alt={alt} loading='lazy' />
+                <img className={css.gallery__image} src={src} alt={alt} loading="lazy" />
                 {showModal && (
                     <Modal
                         largeImageURL={largeImageURL}
@@ -30,8 +30,8 @@ class ImageGalleryItem extends Component {
                     />
                 )}
             </li>
-        );
-    }
+        )
+    };
 };
 
 ImageGalleryItem.propTypes = {

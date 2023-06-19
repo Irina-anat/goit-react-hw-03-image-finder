@@ -5,6 +5,8 @@ import Button from './Button/Button';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchImages } from 'servises/api';
+import Loader from './Loader/Loader';
+import { toast } from 'react-toastify';
 
 
 
@@ -12,11 +14,11 @@ class App extends Component{
   state = {
     searchQuery: '',
     images: [],
-    isLoading: false,
     error: null,
     page: 1,
     per_page: 12,
     loadMore: false,
+    isLoading: false,
   };
 
   componentDidUpdate(_, prevState) {
@@ -28,12 +30,15 @@ class App extends Component{
 
    getImages = async (query, page) => {
     this.setState({ isLoading: true });
-    if (!query) {
+     if (!query) {
       return;
     }
     try {
       const { hits, totalHits } = await fetchImages(query, page);
-      console.log(hits, totalHits);
+     // console.log(hits, totalHits);
+      if (!hits.length) {
+      return toast.info('Nothing was found for your request. Try something else');  
+      }
       this.setState(prevState => ({
         images: [...prevState.images, ...hits],
         loadMore: this.state.page < Math.ceil(totalHits / this.state.per_page),
@@ -55,20 +60,21 @@ class App extends Component{
 
 
   render() {
-    const {  images,  loadMore, page, } = this.state;
+    const {  images,  loadMore, page, isLoading} = this.state;
     return (
       <div>
         <Searchbar onSubmitImage={this.hangleFormSubmit } />
-        
-         
-        <ImageGallery images={images}  />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ImageGallery images={images} />
+        )}
         {loadMore && <Button onloadMore={this.onloadMore} page={page} />}
-        
         <ToastContainer autoClose={3000} />
     </div> 
     )
-  }
-    };
+  };
+};
 
 export { App };
 

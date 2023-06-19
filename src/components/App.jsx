@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { fetchImages } from 'servises/api';
 import Loader from './Loader/Loader';
 import { toast } from 'react-toastify';
-
+import { animateScroll } from 'react-scroll';
 
 
 class App extends Component{
@@ -37,7 +37,8 @@ class App extends Component{
       const { hits, totalHits } = await fetchImages(query, page);
      // console.log(hits, totalHits);
       if (!hits.length) {
-      return toast.info('Nothing was found for your request. Try something else');  
+        this.setState({loadMore: false}) 
+        return toast.info('Nothing was found for your request. Try something else');  
       }
       this.setState(prevState => ({
         images: [...prevState.images, ...hits],
@@ -51,10 +52,47 @@ class App extends Component{
   };
 
   hangleFormSubmit = searchQuery => {
-    this.setState({ searchQuery, images: [],})
-}
+    this.setState({ searchQuery, images: [], })
+  };
 
   onloadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+    this.scrollToBottomButton()
+  };
+
+  scrollToBottomButton = () => {
+    animateScroll.scrollToBottom({
+      duration: 2000,
+      delay: 10,
+      smooth: 'linear',
+    });
+  };
+
+  render() {
+    const {  images,  loadMore, isLoading, page} = this.state;
+    return (
+      <div>
+        <Searchbar onSubmitImage={this.hangleFormSubmit } />
+        {isLoading ? (
+          <Loader/>
+        ) : (
+          <ImageGallery images={images} />
+        )}
+        {loadMore && <Button onloadMore={this.onloadMore} page={page}/>}
+        <ToastContainer autoClose={3000} />
+    </div> 
+    )
+  };
+};
+
+
+ 
+export { App };
+
+
+  
+  
+  /*onloadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
@@ -73,15 +111,7 @@ class App extends Component{
         <ToastContainer autoClose={3000} />
     </div> 
     )
-  };
-};
-
-export { App };
-
-
-  
-  
-  
+  };*/
 
   
   

@@ -15,10 +15,10 @@ class App extends Component{
     searchQuery: '',
     images: [],
     error: null,
+    isLoading: false,
     page: 1,
     per_page: 12,
     loadMore: false,
-    isLoading: false,
   };
 
   componentDidUpdate(_, prevState) {
@@ -65,7 +65,7 @@ class App extends Component{
       <div>
         <Searchbar onSubmitImage={this.hangleFormSubmit } />
         {isLoading ? (
-          <Loader />
+          <Loader/>
         ) : (
           <ImageGallery images={images} />
         )}

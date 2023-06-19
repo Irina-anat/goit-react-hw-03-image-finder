@@ -69,7 +69,7 @@ class App extends Component{
   };
 
   render() {
-    const {  images,  loadMore, isLoading, page} = this.state;
+    const {  images,  loadMore, isLoading} = this.state;
     return (
       <div>
         <Searchbar onSubmitImage={this.hangleFormSubmit } />
@@ -78,7 +78,7 @@ class App extends Component{
         ) : (
           <ImageGallery images={images} />
         )}
-        {loadMore && <Button onloadMore={this.onloadMore} page={page}/>}
+        {loadMore && <Button onloadMore={this.onloadMore}/>}
         <ToastContainer autoClose={3000} />
     </div> 
     )

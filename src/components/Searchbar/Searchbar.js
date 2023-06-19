@@ -1,6 +1,9 @@
 import css from  './Searchbar.module.css';
 import { ReactComponent as AddIcon } from 'icons/serch.svg';
 import { Component } from 'react';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+
 
 class Searchbar extends Component  {
 
@@ -15,9 +18,8 @@ class Searchbar extends Component  {
     handleSubmit = event => {
         event.preventDefault();
     if (this.state.searchQuery.trim() === '') {
-        alert('Please enter the search data');
-        return;
-    }
+    return  toast.info('Please enter the search data.');
+        };
 
         this.props.onSubmitImage(this.state.searchQuery);
         this.setState({ searchQuery: '' });
@@ -43,8 +45,12 @@ class Searchbar extends Component  {
             </form>
         </header>
     );
-    };
-    
-}
+    };   
+};
+
+Searchbar.propTypes = {
+    onSubmitImage: PropTypes.func.isRequired
+};
 
 export default Searchbar;
+

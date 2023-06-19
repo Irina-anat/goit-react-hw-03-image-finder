@@ -15,11 +15,8 @@ class App extends Component{
     images: [],
     isLoading: false,
     error: null,
-   /* showModal: false,
-    largeImageURL: 'largeImageURL',*/
     page: 1,
     per_page: 12,
-    id: null,
     loadMore: false,
   };
 
@@ -57,19 +54,6 @@ class App extends Component{
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
-  /*openModal = (largeImageURL) => {
-    this.setState({
-      showModal: true,
-      largeImageURL: largeImageURL,
-    });
-  };
-
-  closeModal = () => {
-    this.setState({
-      showModal: false,
-    });
-  };
-  */
 
   render() {
     const {  images,  loadMore, page, } = this.state;
@@ -92,32 +76,28 @@ export { App };
 
   
   
- /* openModal = largeImageURL => {
-    console.log(largeImageURL);
-    this.setState({
-      showModal: true,
-      largeImageURL: largeImageURL,
-    });
-  };
-   {showModal && (
-          <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
-        )}
+  
 
-
-        <div>
-        <Searchbar onSubmitImage={this.hangleFormSubmit } />
-        
-         
-        <ImageGallery images={images} openModal={this.openModal}  />
-        {loadMore && <Button onloadMore={this.onloadMore} page={page} />};
-        {showModal && (
-          <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />
-        )};
-        <ToastContainer autoClose={3000} />
-    </div> 
-  */
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
   
   
   

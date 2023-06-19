@@ -52,7 +52,7 @@ class App extends Component{
   };
 
   hangleFormSubmit = searchQuery => {
-    this.setState({ searchQuery, images: [], })
+    this.setState({ searchQuery, images: [], page: 1, })
   };
 
   onloadMore = () => {

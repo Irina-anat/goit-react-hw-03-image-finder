@@ -29,7 +29,7 @@ class App extends Component{
   };
 
    getImages = async (query, page) => {
-    this.setState({ isLoading: true });
+     this.setState({ isLoading: true});
      if (!query) {
       return;
     }
@@ -75,8 +75,8 @@ class App extends Component{
         <Searchbar onSubmitImage={this.hangleFormSubmit } />
         {isLoading ? (
           <Loader/>
-        ) : (
-          <ImageGallery images={images} />
+        ) : ( 
+          <ImageGallery images={images}  />
         )}
         {loadMore && <Button onloadMore={this.onloadMore}/>}
         <ToastContainer autoClose={3000} />
@@ -86,33 +86,10 @@ class App extends Component{
 };
 
 
- 
 export { App };
 
 
   
-  
-  /*onloadMore = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
-  };
-
-
-  render() {
-    const {  images,  loadMore, page, isLoading} = this.state;
-    return (
-      <div>
-        <Searchbar onSubmitImage={this.hangleFormSubmit } />
-        {isLoading ? (
-          <Loader/>
-        ) : (
-          <ImageGallery images={images} />
-        )}
-        {loadMore && <Button onloadMore={this.onloadMore} page={page} />}
-        <ToastContainer autoClose={3000} />
-    </div> 
-    )
-  };*/
-
   
   
   

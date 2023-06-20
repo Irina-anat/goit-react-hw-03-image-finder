@@ -5,8 +5,8 @@ const Loader = () => {
     return (<div className={css.loader}>
         <ColorRing
             visible={true}
-            height="80"
-            width="80"
+            height="300"
+            width="300"
             ariaLabel="blocks-loading"
             wrapperStyle={{}}
             wrapperClass="blocks-wrapper"

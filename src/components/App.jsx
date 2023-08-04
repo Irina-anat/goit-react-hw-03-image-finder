@@ -9,7 +9,6 @@ import Loader from './Loader/Loader';
 import { toast } from 'react-toastify';
 import { animateScroll } from 'react-scroll';
 
-
 class App extends Component{
   state = {
     searchQuery: '',
@@ -69,10 +68,13 @@ class App extends Component{
   };
 
   render() {
-    const {  images,  loadMore, isLoading} = this.state;
+    const {  images,  loadMore, isLoading, error} = this.state;
     return (
       <div>
-        <Searchbar onSubmitImage={this.hangleFormSubmit } />
+        <Searchbar onSubmitImage={this.hangleFormSubmit} />
+        {error && (<p>
+        Something happened:(Please refresh the page and try again.
+        </p>)}
         {isLoading ? (
           <Loader/>
         ) : ( 
@@ -84,6 +86,7 @@ class App extends Component{
     )
   };
 };
+
 
 
 export { App };

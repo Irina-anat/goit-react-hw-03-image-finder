@@ -59,12 +59,14 @@ class App extends Component {
     }
   };
 
-  hangleFormSubmit = (searchQuery) => {
+  handleFormSubmit = (searchQuery) => {
     this.setState({ searchQuery, images: [], page: 1 });
   };
 
-  onloadMore = () => {
-    this.setState((prevState) => ({ page: prevState.page + 1 }));
+  onLoadMore = () => {
+    this.setState((prevState) => ({
+      page: prevState.page + 1,
+    }));
     this.scrollToBottomButton();
   };
 
@@ -81,7 +83,7 @@ class App extends Component {
 
     return (
       <>
-        <Searchbar onSubmitImage={this.hangleFormSubmit} />
+        <Searchbar onSubmitImage={this.handleFormSubmit} />
         {status === Status.IDLE && null}
 
         {status === Status.PENDING && <Loader />}
@@ -93,16 +95,18 @@ class App extends Component {
         {status === Status.RESOLVED && (
           <>
             <ImageGallery images={images} />
-            {loadMore && <Button onloadMore={this.onloadMore} />}
+            {loadMore && <Button onloadMore={this.onLoadMore} />}
           </>
         )}
-       <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} />
       </>
     );
   }
-};
+}
 
 export { App };
+
+
 
 /*class App extends Component{
   state = {

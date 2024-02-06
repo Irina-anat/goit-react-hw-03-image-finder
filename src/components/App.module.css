@@ -1,0 +1,12 @@
+.app {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+    padding-bottom: 24px;
+}
+
+.error__text {
+    color: #0000ff;
+    font-size: 40px;
+    font-weight: 700;
+}

@@ -8,6 +8,8 @@ import Loader from './Loader/Loader';
 import { toast } from 'react-toastify';
 import { animateScroll } from 'react-scroll';
 import 'react-toastify/dist/ReactToastify.css';
+import css from '../components/App.module.css';
+
 
 
 const Status = {
@@ -33,7 +35,7 @@ class App extends Component {
     if (prevState.searchQuery !== searchQuery || prevState.page !== page) {
       this.getImages(searchQuery, page);
     }
-  }
+  };
 
   getImages = async (query, page) => {
     this.setState({ status: Status.PENDING });
@@ -82,14 +84,14 @@ class App extends Component {
     const { images, loadMore, status } = this.state;
 
     return (
-      <>
+      <div className={css.app}>
         <Searchbar onSubmitImage={this.handleFormSubmit} />
         {status === Status.IDLE && null}
 
         {status === Status.PENDING && <Loader />}
 
         {status === Status.REJECTED && (
-          <p>Something happened. Please refresh the page and try again.</p>
+          <p className={css.error__text}>Something happened(. Please refresh the page and try again.</p>
         )}
 
         {status === Status.RESOLVED && (
@@ -99,10 +101,10 @@ class App extends Component {
           </>
         )}
         <ToastContainer autoClose={3000} />
-      </>
+      </div>
     );
-  }
-}
+  };
+};
 
 export { App };
 

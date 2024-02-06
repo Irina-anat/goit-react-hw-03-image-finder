@@ -1,8 +1,9 @@
-import css from  './Searchbar.module.css';
-import { ReactComponent as AddIcon } from 'icons/serch.svg';
+//import { ReactComponent as AddIcon } from 'icons/serch.svg';
+import { FaSearch } from "react-icons/fa";
 import { Component } from 'react';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
+import css from  './Searchbar.module.css';
 
 
 class Searchbar extends Component  {
@@ -29,7 +30,7 @@ class Searchbar extends Component  {
              <header className={css.searchbar}>
                  <form  onSubmit={this.handleSubmit} className={css.search__form} >
                 <button type="submit"  className={css.search__button}>
-                    <AddIcon className={css.search__icon}/>
+                    <FaSearch className={css.search__icon}/>
                     <span className={css.search__label}>Search</span>
                 </button>
                 
